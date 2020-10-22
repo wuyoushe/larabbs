@@ -1,5 +1,16 @@
 {
   "Login": "登陆",
   "Password": "密码",
-  "Remeber Me": "记住我"
+  "Remeber Me": "记住我",
+  "Created at":"创建时间",
+  "Updated at":"更新时间",
+  "name":"名字",
+  "email":"邮箱",
+  "Admin":"管理",
+  "Dashboard":"显示面板",
+  "Users":"用户列表",
+  "Roles":"用户角色",
+  "Permission":"权限",
+  "Operation log":"操作日志",
+  "Menu":"管理菜单"
 }

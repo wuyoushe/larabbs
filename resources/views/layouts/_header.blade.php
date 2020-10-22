@@ -20,12 +20,12 @@
                     <li class="nav-item {{ category_nav_active(4) }}"><a class="nav-link" href="{{ route('categories.show', 4) }}">公告</a></li>
                 </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
                     @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,8 +49,8 @@
                                 </a>
                             </div>
                         </li>
-                        @endguest
-            </ul>
+                    @endguest
+                </ul>
+            </div>
         </div>
-    </div>
 </nav>
