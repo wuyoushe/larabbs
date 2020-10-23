@@ -3,7 +3,7 @@
 <div class="reply_box">
     <form action="{{ route('replies.store') }}" method="POST" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="topic_id" value="{{ $topic-id }}">
+        <input type="hidden" name="topic_id" value="{{ $topic->id }}">
         <div class="form-group">
             <textarea class="form-control" name="content" rows="3" placeholder="分享你的见解"></textarea>
         </div>
