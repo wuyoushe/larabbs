@@ -35,7 +35,7 @@ class RepliesController extends Controller
 	// 	return view('replies.create_and_edit', compact('reply'));
 	// }
 
-	public function store(ReplyRequest $request)
+	public function store(ReplyRequest $request, Reply $reply)
 	{
 		$reply->content = $request->content;
 		$reply->user_id = Auth::id();
