@@ -3383,6 +3383,10 @@
                 "security",
                 "spatie"
             ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/3.17.0"
+            },
             "funding": [
                 {
                     "url": "https://spatie.be/open-source/support-us",
@@ -6062,6 +6066,10 @@
                 "debugging",
                 "laravel"
             ],
+            "support": {
+                "issues": "https://github.com/viacreative/sudo-su/issues",
+                "source": "https://github.com/viacreative/sudo-su/tree/master"
+            },
             "time": "2017-03-23T16:28:08+00:00"
         },
         {
