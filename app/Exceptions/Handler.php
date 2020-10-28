@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Api\Helpers\ExceptionReport;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -50,6 +51,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        //ajax请求我们才捕捉异常
+        if($request->ajax()) {
+            $reporter = ExceptionReport::make($exception);
+            if($reporter->shouldReturn()) {
+                return $reporter->report();
+            }
+            if(env('APP_DEBUG')) {
+                //开发环境，则显示详细错误信息
+                return parent::render($request, $exception);
+            }else{
+                //线上环境未知错误，则显示500
+                return $reporter->prodReport();
+            }
+        }
         return parent::render($request, $exception);
     }
 }

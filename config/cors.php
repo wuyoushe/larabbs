@@ -1,34 +1,14 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cross-Origin Resource Sharing (CORS) Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure your settings for cross-origin resource sharing
-    | or "CORS". This determines what cross-origin operations may execute
-    | in web browsers. You are free to adjust these settings as needed.
-    |
-    | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-    |
-    */
-
-    'paths' => ['api/*'],
-
-    'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
-
-    'exposed_headers' => [],
-
-    'max_age' => 0,
-
-    'supports_credentials' => false,
-
+    'allow-credentials'  => env('CORS_ALLOW_CREDENTIAILS', false), // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
+    'allow-headers'      => ['*'], // ex: Content-Type, Accept, X-Requested-With
+    'expose-headers'     => ['Authorization'],
+    'origins'            => ['*'], // ex: http://localhost
+    'methods'            => ['*'], // ex: GET, POST, PUT, PATCH, DELETE
+    'max-age'            => env('CORS_ACCESS_CONTROL_MAX_AGE', 0),
+    'laravel'            => [
+        'allow-route-prefix' => env('CORS_LARAVEL_ALLOW_ROUTE_PREFIX', '*'), // The prefix is using \Illumante\Http\Request::is method. 👉
+        'route-group-mode'   => env('CORS_LARAVEL_ROUTE_GROUP_MODE', false),
+    ],
 ];
