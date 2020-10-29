@@ -60,7 +60,7 @@
             </form>
           </div>
           @endcan
-          {{--用户回复列表--}}
+          {{--用户回复列表 话题回复功能只允许我们登陆用户使用，未登陆用户不显示 Blade模板提供了一个视条件加载子模板的语法@includeWhen(boolean, '',[])--}}
           <div class="card topic-reply mt-4">
             <div class="card-body">
               @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])

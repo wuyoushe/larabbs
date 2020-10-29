@@ -6,6 +6,11 @@ class Topic extends Model
 {
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -27,6 +32,7 @@ class Topic extends Model
                     break;
         }
     }
+
     public function scopeRecentReplied($query)
     {
         return $query->orderBy('updated_at', 'desc');
@@ -37,9 +43,11 @@ class Topic extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
-    public function replies()
+
+
+    public function link($params = [])
     {
-        return $this->hasMany(Reply::class);
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
     }
 
     public function updateReplyCount()
