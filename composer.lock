@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4f8f759cc9f029d4165536b0bd30d68",
+    "content-hash": "1b97c774028d0d84a298f7d9f4515831",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2807,6 +2807,10 @@
                 "predis",
                 "redis"
             ],
+            "support": {
+                "issues": "https://github.com/predis/predis/issues",
+                "source": "https://github.com/predis/predis/tree/v1.1.6"
+            },
             "funding": [
                 {
                     "url": "https://github.com/sponsors/tillkruss",
