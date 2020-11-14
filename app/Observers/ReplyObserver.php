@@ -14,11 +14,14 @@ class ReplyObserver
     public function created(Reply $reply)
     {
         //$reply->topic->increment('reply_count', 1);
-        $reply->topic->reply_count = $reply->topic->replies->count();
-        $reply->topic->save();
+        // $reply->topic->reply_count = $reply->topic->replies->count();
+        // $reply->topic->save();
+        if( !app()->runningInConsole()){
+            $reply->topic->updateReplyCount();
+            //通知话题作者有新的评论
+            $reply->topic->user->notify(new TopicReplied($reply));
+        }
 
-        //通知话题作者有新的评论
-        $reply->topic->user->notify(new TopicReplied($reply));
     }
 
     public function creating(Reply $reply)

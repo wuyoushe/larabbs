@@ -60,6 +60,7 @@
               </form>
             </div>
           @endcan
+<<<<<<< HEAD
 
         </div>
       </div>
@@ -67,6 +68,11 @@
       {{-- 用户回复列表 --}}
       <div class="card topic-reply mt-4">
           <div class="card-body">
+=======
+          {{--用户回复列表 话题回复功能只允许我们登陆用户使用，未登陆用户不显示 Blade模板提供了一个视条件加载子模板的语法@includeWhen(boolean, '',[])--}}
+          <div class="card topic-reply mt-4">
+            <div class="card-body">
+>>>>>>> 835d4cda62862306a1829e4f8d49a85dec68be3d
               @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
               @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
           </div>

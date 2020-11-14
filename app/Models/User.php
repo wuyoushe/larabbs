@@ -13,6 +13,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
 {
     use Notifiable, MustVerifyEmailTrait, HasRoles;
+    use Traits\ActiveUserHelper;
     use Notifiable {
         notify as protected laravelNotify;
     }
