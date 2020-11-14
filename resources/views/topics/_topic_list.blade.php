@@ -3,8 +3,9 @@
         @foreach ($topics as $topic)
             <li class="media">
                 <div class="media-left">
+                    {{-- {{ dd(isset($topic->user['avatar'])) }} --}}
                     <a href="{{ route('users.show', [$topic->user_id]) }}">
-                        <img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="{{ isset($topic->user->avatar)?? $topic->user->avatar or 'null' }}" title="{{ isset($topic->user->name)??$topic->user->name or 'null' }}">
+                        <img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="{{$topic->user['avatar']}}" title="{{ isset($topic->user->name)??$topic->user->name or 'null' }}">
                     </a>
                 </div>
 

@@ -23,7 +23,7 @@ return [
             'title'    => '作者',
             'sortable' => false,
             'output'   => function ($value, $model) {
-                $avatar = $model->user->avatar;
+                $avatar = $model->user['avatar'];
                 $value = empty($avatar) ? 'N/A' : '<img src="'.$avatar.'" style="height:22px;width:22px"> ' . $model->user->name;
                 return model_link($value, $model->user);
             },
