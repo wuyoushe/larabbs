@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
     {
         $this->notification_count = 0;
         $this->save();
-        $this->unreadNotifications()->markAsRead();
+        $this->unreadNotifications->markAsRead();
     }
 
     //将密码进行加密
@@ -82,5 +82,16 @@ class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
     {
         // TODO: Implement getJWTCustomClaims() method.
         return [];
+    }
+
+
+    public function setAvatarAttribute($path)
+    {
+        //如果不是 `http`子串开头，那就是从后台上传的，需要补全url
+        if( ! \Str::startsWith($path, 'http') || ! \Str::startsWith($path, 'https')) {
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
     }
 }
