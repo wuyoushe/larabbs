@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\VerificationCodesController;
+use App\Http\Controllers\Api\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('api')->prefix('v1')->middleware('cors')->group(function() {
-    //用户注册
-    Route::post('/users', 'UserController@store')->name('users.store');
+Route::namespace('api')->prefix('v1')->middleware(['cors', 'throttle:1,1'])->group(function() {
+
     //用户登录
     Route::post('/login', 'UserController@login')->name('users.login');
 
@@ -36,14 +37,21 @@ Route::namespace('api')->prefix('v1')->middleware('cors')->group(function() {
     });
 });
 
-// Route::prefix('v1')->name('api.v1.')->group(function() {
-//     Route::get('version', function() {
-//         abort(403, 'test');
-//         return 'this is version v1';
-//     })->name('version');
-// });
+Route::prefix('v1')->name('api.v1.')->middleware(['cors'])
+->group(function() {
 
-Route::prefix('v1')->name('api.v1.')->group(function() {
+    Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function() {
+        //短信验证码
+    Route::post('verificationCodes', [VerificationCodesController::class,'store'])
+    ->name('verificationCodes.store');
+    //用户注册
+    Route::post('/users', [UsersController::class, 'store'])->name('users.store');
+    });
+
+    Route::middleware('throttle:' . config('api.rate_limits.access'))
+    ->group(function() {
+
+    });
 
 });
 

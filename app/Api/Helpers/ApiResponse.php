@@ -116,9 +116,9 @@ trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function success($data, $status = "success"){
+    public function success($data, $message = '返回成功', $status = "success"){
 
-        return $this->status($status,compact('data'));
+        return $this->status($status,compact('message', 'data'));
     }
 
     /**
